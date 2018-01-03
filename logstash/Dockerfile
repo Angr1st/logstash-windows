@@ -13,11 +13,11 @@ RUN Invoke-WebRequest -outfile logstash.zip "https://artifacts.elastic.co/downlo
     Move-Item c:/logstash-$($env:ES_VERSION) $env:ES_HOME; `
     Remove-Item logstash.zip
 
-#VOLUME C:\data
+VOLUME C:\data
 
 # REMARKS - DNS and mount tweaks needed for Windows
-RUN Set-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name ServerPriorityTimeLimit -Value 0 -Type DWord; 
-#    Set-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\DOS Devices' -Name 'G:' -Value '\??\C:\data' -Type String    
+RUN Set-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name ServerPriorityTimeLimit -Value 0 -Type DWord; `
+    Set-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\DOS Devices' -Name 'G:' -Value '\??\C:\data' -Type String    
 
 #HEALTHCHECK --interval=5s `
 # CMD powershell -command `
