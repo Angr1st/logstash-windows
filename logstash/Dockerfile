@@ -28,7 +28,7 @@ RUN Set-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Par
 #     else { return 1 }; `
 #    } catch { return 1 }
     
-#EXPOSE 9200 9300
+EXPOSE 9600
 WORKDIR C:\logstash
 #COPY config ./config
 
